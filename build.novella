@@ -1,0 +1,14 @@
+template "mkdocs"
+
+action "mkdocs-update-config" {
+    site_name = "static-vs-generated-markdown-files-issue"
+    profile = "material"
+    update_with config -> {
+        print(config)
+        config['nav'].append({ 'Test': [] })
+    }
+}
+
+action "preprocess-markdown" {
+    use "pydoc"
+}
